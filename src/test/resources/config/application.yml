@@ -21,6 +21,10 @@ mongock:
     write-concern:
       journal: false
 
+logging:
+  level:
+    javax.management: INFO
+
 spring:
   application:
     name: sampleSentry
