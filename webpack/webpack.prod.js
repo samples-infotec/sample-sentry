@@ -132,8 +132,10 @@ if (process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_ENVIRONMENT && process.e
       })
     );
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
+} else {
+  console.log('Sin información para Sentry');
 }
 
 if (config.build.bundleAnalyzerReport) {
