@@ -7,7 +7,8 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "mx.infotec.sample.sentry.SampleSentryApp",
             "projectName": "sample-sentry",
-            "args": "",
+            "args": "--spring.profiles.active=dev",
+            "vmArgs": ["--add-opens", "java.base/jdk.internal.misc=ALL-UNNAMED", "-Dio.netty.tryReflectionSetAccessible=true"],
             "envFile": "${workspaceFolder}/.env"
         }
     ]
