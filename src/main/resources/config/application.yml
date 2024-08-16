@@ -164,7 +164,12 @@ jhipster:
     license: unlicensed
     license-url:
   security:
-    content-security-policy: "default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com data:"
+    content-security-policy: "default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com https://browser.sentry-cdn.com/ https://gitlab-tmp.infotec.mx/; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' 'unsafe-inline' https://kb.crip.conacyt.mx/;"
+
+front:
+  sentry:
+    environment: ${SENTRY_ENVIRONMENT:local}
+    traces-sample-rate: 0.20
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

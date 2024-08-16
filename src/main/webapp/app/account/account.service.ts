@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Store } from 'vuex';
+import * as Sentry from '@sentry/vue';
 import VueRouter from 'vue-router';
 import TranslationService from '@/locale/translation.service';
 
@@ -36,6 +37,11 @@ export default class AccountService {
           const account = response.data;
           if (account) {
             this.store.commit('authenticated', account);
+
+            Sentry.configureScope(scope => {
+              scope.setUser({ email: account.email });
+            });
+
             if (this.store.getters.currentLanguage !== account.langKey) {
               this.store.commit('currentLanguage', account.langKey);
             }

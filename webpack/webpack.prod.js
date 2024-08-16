@@ -5,6 +5,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { sentryWebpackPlugin } = require('@sentry/webpack-plugin');
 
 const { styleLoaders } = require('./vue.utils');
 const config = require('./config');
@@ -114,6 +115,25 @@ if (config.build.productionGzip) {
       minRatio: 0.8,
     })
   );
+}
+
+if (process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_ENVIRONMENT && process.env.SENTRY_URL) {
+  try {
+    webpackConfig.plugins.push(
+      sentryWebpackPlugin({
+        org: process.env.hasOwnProperty('SENTRY_ORG') ? process.env.SENTRY_ORG : 'sentry',
+        project: process.env.hasOwnProperty('SENTRY_PROJECT') ? process.env.SENTRY_PROJECT : 'sample-sentry',
+        release: config.version,
+        debug: true,
+        dist: config.appDistribution,
+        deploy: {
+          env: process.env.SENTRY_ENVIRONMENT,
+        },
+      })
+    );
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 if (config.build.bundleAnalyzerReport) {

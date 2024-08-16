@@ -8,6 +8,9 @@ import App from './app.vue';
 import Vue2Filters from 'vue2-filters';
 import { ToastPlugin } from 'bootstrap-vue';
 import router from './router';
+import axios from 'axios';
+import * as Sentry from '@sentry/vue';
+import { Integrations } from '@sentry/tracing';
 import * as config from './shared/config/config';
 import * as bootstrapVueConfig from './shared/config/config-bootstrap-vue';
 import JhiItemCountComponent from './shared/jhi-item-count.vue';
@@ -48,6 +51,78 @@ const store = config.initVueXStore(Vue);
 const translationService = new TranslationService(store, i18n);
 const loginService = new LoginService();
 const accountService = new AccountService(store, translationService, router);
+
+/* tslint:disable */
+axios
+  .get('sentry/config')
+  .then(res => {
+    if (res?.data?.dsn) {
+      let environment = 'local';
+      let tracesSampleRate: 0.25;
+
+      if (res.data.environment) {
+        environment = res.data['environment'];
+      }
+
+      if (res.data.tracesSampleRate) {
+        tracesSampleRate = res.data['tracesSampleRate'];
+      }
+
+      Sentry.init({
+        Vue,
+        dsn: res.data['dsn'],
+        beforeSend(event, hint) {
+          // Check if it is an exception, and if so, show the report dialog
+          if (event.exception) {
+            let value = null;
+
+            if (event?.exception?.values?.length) {
+              value = event.exception.values.find(e => e.value.indexOf('navigation guard') != -1);
+            } else {
+              console.log(JSON.stringify(event.exception));
+            }
+
+            // Check isn't navigation guard exception
+            if (!value) {
+              let feedBackConfig;
+
+              if (store.getters.account?.firstName) {
+                const username = store.getters.account.lastName
+                  ? `${store.getters.account.firstName} ${store.getters.account.lastName}`
+                  : store.getters.account.firstName;
+
+                feedBackConfig = { eventId: event.event_id, user: { name: username, email: store.getters.account.email } };
+              } else {
+                feedBackConfig = { eventId: event.event_id };
+              }
+
+              Sentry.showReportDialog(feedBackConfig);
+            }
+          }
+          return event;
+        },
+        integrations: [
+          new Integrations.BrowserTracing({
+            routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+            tracingOrigins: ['localhost', 'demo-sentry-7f000101.nip.io', /^\//],
+          }),
+        ],
+        // This sets the sample rate to be 10%. You may want this to be 100% while
+        // in development and sample at a lower rate in production
+        tracesSampleRate: tracesSampleRate,
+        environment: environment,
+        release: VERSION,
+        dist: APP_DISTRIBUTION,
+      });
+    } else {
+      console.log('Sentry sin activar');
+    }
+  })
+  .catch(err => {
+    console.error('Error al realizar la configuración de sentry');
+    console.error(err);
+  });
+/* tslint:enable */
 
 router.beforeEach(async (to, from, next) => {
   if (!to.matched.length) {

@@ -83,6 +83,11 @@ jhipster:
       host: localhost
       port: 5000
       queue-size: 512
+
+front:
+  sentry:
+    environment: local
+    traces-sample-rate: 1.0
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
