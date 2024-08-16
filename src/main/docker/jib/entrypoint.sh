@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ -z "$SENTRY_RELEASE" ]; then
+    if [ -f /app/resources/META-INF/build-info.properties ]; then
+        export SENTRY_RELEASE=$(grep build.version /app/resources/META-INF/build-info.properties | cut -d '=' -f 2)
+    fi
+fi
+
 echo "The application will start in ${JHIPSTER_SLEEP}s..." && sleep ${JHIPSTER_SLEEP}
 
 # usage: file_env VAR [DEFAULT]
