@@ -108,7 +108,7 @@ axios
         integrations: [
           new Integrations.BrowserTracing({
             routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-            tracingOrigins: ['localhost', 'demo-sentry-7f000101.nip.io', /^\//],
+            tracingOrigins: ['localhost', 'demo-sentry-7f000001.nip.io', /^\//],
           }),
           new Sentry.Replay(),
         ],
