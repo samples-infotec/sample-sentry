@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SampleSentryApp<sample-sentry>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "mx.infotec.sample.sentry.SampleSentryApp",
+            "projectName": "sample-sentry",
+            "args": "--spring.profiles.active=dev",
+            "vmArgs": ["--add-opens", "java.base/jdk.internal.misc=ALL-UNNAMED", "-Dio.netty.tryReflectionSetAccessible=true"],
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

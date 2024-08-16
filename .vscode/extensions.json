@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "vscjava.vscode-java-pack",
+    "esbenp.prettier-vscode",
+    "vue.volar",
+    "sonarsource.sonarlint-vscode",
+    "EditorConfig.EditorConfig",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "Orta.vscode-jest",
+    "shardulm94.trailing-spaces",
+    "vivaxy.vscode-conventional-commits",
+    "oderwat.indent-rainbow",
+    "IronGeek.vscode-env"
+  ]
+}
