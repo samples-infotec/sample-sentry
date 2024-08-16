@@ -29,6 +29,10 @@ const FirmaUpdate = () => import('@/entities/firma/firma-update.vue');
 const FirmaDetails = () => import('@/entities/firma/firma-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
+// prettier-ignore
+const Rev01 = () => import('@/entities/modules/rev01/rev01.vue');
+const Rev02 = () => import('@/entities/modules/rev02/rev02.vue');
+
 export default {
   path: '/',
   component: Entities,
@@ -130,5 +134,17 @@ export default {
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
+    {
+      path: '/modules/rev01',
+      name: 'Rev01',
+      component: Rev01,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/modules/rev02',
+      name: 'Rev02',
+      component: Rev02,
+      meta: { authorities: [Authority.USER] },
+    },
   ],
 };

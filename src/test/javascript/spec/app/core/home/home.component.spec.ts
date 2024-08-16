@@ -8,6 +8,9 @@ config.initVueApp(localVue);
 const store = config.initVueXStore(localVue);
 const i18n = config.initI18N(localVue);
 localVue.component('router-link', {});
+localVue.component('b-container', {});
+localVue.component('b-col', {});
+localVue.component('b-row', {});
 
 describe('Home', () => {
   let home: HomeClass;
