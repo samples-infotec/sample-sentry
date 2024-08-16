@@ -48,4 +48,24 @@ export default class AlertService {
         this.showError(instance, httpErrorResponse.data.message);
     }
   }
+  public showInfo(instance: Vue, message: string, params?: any) {
+    const alertMessage = instance.$t(message, params);
+    (instance.$root as any).$bvToast.toast(alertMessage.toString(), {
+      toaster: 'b-toaster-top-center',
+      title: 'Info',
+      variant: 'info',
+      solid: true,
+      autoHideDelay: 5000,
+    });
+  }
+  public showSuccess(instance: Vue, message: string, params?: any) {
+    const alertMessage = instance.$t(message, params);
+    (instance.$root as any).$bvToast.toast(alertMessage.toString(), {
+      toaster: 'b-toaster-top-center',
+      title: 'Success',
+      variant: 'success',
+      solid: true,
+      autoHideDelay: 5000,
+    });
+  }
 }
