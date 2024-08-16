@@ -39,7 +39,7 @@ export default class AccountService {
             this.store.commit('authenticated', account);
 
             Sentry.configureScope(scope => {
-              scope.setUser({ email: account.email });
+              scope.setUser({ name: `${account.firstName} ${account.lastName}`, email: account.email });
             });
 
             if (this.store.getters.currentLanguage !== account.langKey) {
