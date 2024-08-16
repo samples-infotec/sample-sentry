@@ -2,6 +2,7 @@ import { Component, Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
 import AccountService from '@/account/account.service';
 import TranslationService from '@/locale/translation.service';
+import * as Sentry from '@sentry/vue';
 
 import EntitiesMenu from '@/entities/entities-menu.vue';
 
@@ -45,6 +46,7 @@ export default class JhiNavbar extends Vue {
     localStorage.removeItem('core-authenticationToken');
     sessionStorage.removeItem('core-authenticationToken');
     this.$store.commit('logout');
+    Sentry.configureScope(scope => scope.setUser(null));
     if (this.$route.path !== '/') {
       return this.$router.push('/');
     }

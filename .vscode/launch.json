@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SampleSentryApp<sample-sentry>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "mx.infotec.sample.sentry.SampleSentryApp",
+            "projectName": "sample-sentry",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

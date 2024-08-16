@@ -75,6 +75,7 @@ public class SecurityConfiguration {
         http
             .securityMatcher(new NegatedServerWebExchangeMatcher(new OrServerWebExchangeMatcher(
                 pathMatchers("/app/**", "/_app/**", "/i18n/**", "/img/**", "/content/**", "/swagger-ui/**", "/v3/api-docs/**", "/test/**"),
+                pathMatchers(HttpMethod.GET, "/sentry/config"),
                 pathMatchers(HttpMethod.OPTIONS, "/**")
             )))
             .csrf()

@@ -6,6 +6,11 @@ module.exports = {
   serverApiUrl: '',
   // APP_VERSION is passed as an environment variable from the Gradle / Maven build tasks.
   version: process.env.hasOwnProperty('APP_VERSION') ? process.env.APP_VERSION : 'UNKNOWN',
+  appDistribution: process.env.hasOwnProperty('CI_PIPELINE_IID')
+    ? process.env.CI_PIPELINE_IID
+    : process.env.hasOwnProperty('DRONE_BUILD_NUMBER')
+    ? process.env.DRONE_BUILD_NUMBER
+    : 'None',
 
   dev: {
     hotReload: true,
