@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20240816075440",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "convocatoria",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "anio",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "2099",
+      "fieldValidateRulesMin": "1960"
+    },
+    {
+      "fieldName": "fechaCreacion",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Convocatoria",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "proyecto",
+      "otherEntityRelationshipName": "convocatoria",
+      "relationshipName": "proyecto",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

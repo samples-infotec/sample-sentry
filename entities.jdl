@@ -1,0 +1,42 @@
+entity Convocatoria {
+    nombre String required
+    anio Integer min(1960) max(2099)
+    fechaCreacion LocalDate
+}
+
+entity Proyecto {
+    detalle String
+    modalidad String required
+    titulo String required
+    solicitudClave String
+    solicitudFecha Instant
+    completo Boolean required
+}
+
+entity Documento {
+    uri String required
+    data String required
+}
+
+entity Firma {
+    rol String required
+    documentoUri String
+    certificado String
+    rfc String required
+    curp String
+    signature String
+    active Boolean required
+}
+
+/**
+ * One to many relationship.
+ */
+relationship OneToMany {
+    Convocatoria to Proyecto
+    Proyecto to Documento
+    Documento to Firma
+}
+
+dto * with mapstruct
+service * with serviceImpl
+

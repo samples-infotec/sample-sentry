@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20240816075443",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "firma",
+  "fields": [
+    {
+      "fieldName": "rol",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "documentoUri",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "certificado",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rfc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "curp",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "signature",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Firma",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "documento",
+      "otherEntityRelationshipName": "firma",
+      "relationshipName": "documento",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

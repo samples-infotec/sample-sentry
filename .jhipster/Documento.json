@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20240816075442",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "documento",
+  "fields": [
+    {
+      "fieldName": "uri",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "data",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Documento",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "firma",
+      "otherEntityRelationshipName": "documento",
+      "relationshipName": "firma",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "proyecto",
+      "otherEntityRelationshipName": "documento",
+      "relationshipName": "proyecto",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

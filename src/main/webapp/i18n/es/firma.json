@@ -1,0 +1,31 @@
+{
+  "sampleSentryApp": {
+    "firma": {
+      "home": {
+        "title": "Firmas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Firma",
+        "createOrEditLabel": "Crear o editar Firma",
+        "notFound": "Ningún Firmas encontrado"
+      },
+      "created": "Un nuevo Firma ha sido creado con el identificador {{ param }}",
+      "updated": "Un Firma ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Firma ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Firma {{ id }}?"
+      },
+      "detail": {
+        "title": "Firma"
+      },
+      "id": "ID",
+      "rol": "Rol",
+      "documentoUri": "Documento Uri",
+      "certificado": "Certificado",
+      "rfc": "Rfc",
+      "curp": "Curp",
+      "signature": "Signature",
+      "active": "Active",
+      "documento": "Documento"
+    }
+  }
+}

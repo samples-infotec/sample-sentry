@@ -1,0 +1,27 @@
+{
+  "sampleSentryApp": {
+    "convocatoria": {
+      "home": {
+        "title": "Convocatorias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Convocatoria",
+        "createOrEditLabel": "Crear o editar Convocatoria",
+        "notFound": "Ningún Convocatorias encontrado"
+      },
+      "created": "Un nuevo Convocatoria ha sido creado con el identificador {{ param }}",
+      "updated": "Un Convocatoria ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Convocatoria ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Convocatoria {{ id }}?"
+      },
+      "detail": {
+        "title": "Convocatoria"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "anio": "Anio",
+      "fechaCreacion": "Fecha Creacion",
+      "proyecto": "Proyecto"
+    }
+  }
+}

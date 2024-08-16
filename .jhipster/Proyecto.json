@@ -1,0 +1,56 @@
+{
+  "applications": "*",
+  "changelogDate": "20240816075441",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "proyecto",
+  "fields": [
+    {
+      "fieldName": "detalle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modalidad",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "titulo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "solicitudClave",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "solicitudFecha",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "completo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Proyecto",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "documento",
+      "otherEntityRelationshipName": "proyecto",
+      "relationshipName": "documento",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "convocatoria",
+      "otherEntityRelationshipName": "proyecto",
+      "relationshipName": "convocatoria",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
