@@ -18,6 +18,7 @@ logging:
     ROOT: INFO
     tech.jhipster: INFO
     mx.infotec.sample.sentry: INFO
+    org.zalando.problem.spring.common.AdviceTraits: ERROR
 
 management:
   metrics:
